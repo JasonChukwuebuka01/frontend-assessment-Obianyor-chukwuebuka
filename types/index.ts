@@ -6,6 +6,18 @@ export interface Movie {
   poster_path: string | null;
   release_date: string;
   vote_average: number;
+
+}
+
+export interface MovieCluster extends Movie {
+  backdrop_path: string | null;
+  genre_ids: number[];
+  adult: boolean;
+  original_language: string;
+  original_title: string;
+  popularity: number;
+  video: boolean;
+  vote_count: number;
 }
 
 export interface MovieResponse {

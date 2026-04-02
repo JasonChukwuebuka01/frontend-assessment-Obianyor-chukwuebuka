@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Movie } from '@/types';
-import { getMovieImageUrl, formatDate } from '@/lib/transformers';
+import { getMovieImageUrl, formatDate } from '../lib/transformers';
 
 interface MovieCardProps {
     movie: Movie;
