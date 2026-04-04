@@ -1,10 +1,11 @@
-export const runtime = 'edge';
 
 import { getPopularMovies, searchMovies } from '@/features/listing/movies-service';
 import { Suspense } from 'react';
 import MovieCard from '@/components/movie-card';
 import SearchBar from '@/features/listing/search-bar';
 import Pagination from '@/features/listing/pagination';
+
+
 
 /**
  * Next.js 15: searchParams is a Promise. 
@@ -17,6 +18,7 @@ interface HomePageProps {
     minRating?: string;
   }>;
 }
+
 
 export default async function HomePage({ searchParams }: HomePageProps) {
   // 1. Extract and normalize URL parameters
