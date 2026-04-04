@@ -99,7 +99,7 @@ export default async function MovieDetailPage({ params }: Props) {
               )}
             </header>
 
-            <div className=" flex flex-wrap gap-4 text-sm font-medium justify-center items-center md:justify-start  ">
+            <div className=" flex flex-wrap gap-4 text-sm font-medium items-center md:justify-start  ">
               <span className="rounded-full bg-indigo-500/20 px-3 py-1 text-indigo-400 border border-indigo-500/30">
                 {movie.status}
               </span>
