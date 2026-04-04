@@ -1,8 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // 1. Tells Cloudflare to create a standalone build
-  output: "standalone",
+put: "standalone",
 
   images: {
     remotePatterns: [
