@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { getPopularMovies, searchMovies } from '@/features/listing/movies-service';
 import { Suspense } from 'react';
 import MovieCard from '@/components/movie-card';
