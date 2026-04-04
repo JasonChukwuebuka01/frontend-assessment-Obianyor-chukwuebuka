@@ -69,13 +69,13 @@ export default async function MovieDetailPage({ params }: Props) {
             href="/"
             className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition"
           >
-            ← Back to Listing
+            ← Back to Home
           </Link>
         </nav>
       </div>
 
       {/* Content Section */}
-      <article className="relative mx-auto -mt-32 max-w-6xl px-4 pb-20 md:px-8">
+      <article className=" relative mx-auto -mt-32 max-w-6xl px-4 pb-20 md:px-8">
         <div className="flex flex-col gap-8 md:flex-row">
           {/* Poster */}
           <div className="w-64 flex-shrink-0 self-center md:self-start">
