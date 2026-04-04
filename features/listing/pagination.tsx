@@ -11,7 +11,7 @@ export default function Pagination({ currentPage, totalPages }: PaginationProps)
     const router = useRouter();
     const searchParams = useSearchParams();
 
-    // TMDB limits free searches to 500 pages usually
+   
     const maxPages = Math.min(totalPages, 500);
 
     function handlePageChange(newPage: number) {
