@@ -8,13 +8,13 @@ export default function SearchBar() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // 1. Sync local state with the URL initially
+  //  Sync local state with the URL initially
   const [text, setText] = useState(searchParams.get('query') || '');
   const [rating, setRating] = useState(searchParams.get('minRating') || '');
 
   const debouncedQuery = useDebounce(text, 400);
 
-  // 2. The Fix: Only update if the Search/Filter values actually changed
+
   useEffect(() => {
     const currentQuery = searchParams.get('query') || '';
     const currentRating = searchParams.get('minRating') || '';
@@ -27,7 +27,7 @@ export default function SearchBar() {
 
     const params = new URLSearchParams(searchParams.toString());
 
-    // Update Query Param
+  
     if (debouncedQuery) {
       params.set('query', debouncedQuery);
     } else {
@@ -51,6 +51,12 @@ export default function SearchBar() {
 
   }, [debouncedQuery, rating, router, searchParams]);
 
+
+
+
+
+
+  
   return (
     <div className="mx-auto flex max-w-2xl flex-col gap-4">
       {/* Search Input Container */}

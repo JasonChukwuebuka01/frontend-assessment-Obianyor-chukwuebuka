@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Movie Explorer 
 
-## Getting Started
+A  movie discovery application built with **Next.js 15**, **TypeScript**, and **Tailwind CSS**, powered by the **TMDB API**.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+##  Quick Start (Under 5 Commands)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Quick Start (Under 5 Commands)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone:** `git clone https://github.com/JasonChukwuebuka01/frontend-assessment-Obianyor-chukwuebuka.git`
+2. **Install:** `npm install --legacy-peer-deps`
+3. **Environment:** Create a `.env` file with your `TMDB_API_KEY` and `TMDB_BASE_URL`
+4. **Run:** `npm run dev`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+##  Architecture Decisions
+Feature-Based Folder Structure: Organized by domain (e.g., features/listing) rather than generic folders. This improves scalability and makes it easier to locate logic.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Separation of Concerns: UI components (JSX) are kept "dumb." All data fetching and complex logic are moved to Server Components or Utility Functions.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Server-First Approach: Used React Server Components (RSC) to minimize the JavaScript sent to the client, improving initial load times.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Performance Optimizations
+
+React 18 Streaming (B-2): Implemented Suspense boundaries around the MoviesGrid. This allows the page shell (Header/Search) to render instantly while the movie data streams in the background.
+
+Image Optimization: Used the Next.js Image component for automatic resizing, WebP conversion, and lazy loading of movie posters.
+
+Conditional Prefetching: Leveraging Next.js Link component to prefetch movie detail pages for near-instant navigation.
+
+
+
+
+## Bonus Tasks Attempted
+
+ Streaming with Suspense:Throttle your network to "Fast 3G" in DevTools. Notice the Header appears immediately while the Grid shows a skeleton loader.
+
+
+
+
+## 🌐 Deployment Evolution: The Pivot from Cloudflare to Vercel
+
+Initially, this project was architected for **Cloudflare Pages** using the `@cloudflare/next-on-pages` adapter. During the final deployment phase, a strategic shift to **Vercel** was made due to the following technical challenges:
+
+1. **The "Logo-Only" Rendering Bug:** Post-deployment on Cloudflare, the application encountered a runtime execution error where the page would hang, displaying only the static logo/shell without fetching or rendering the dynamic movie content. This indicated a deep compatibility issue between the TMDB fetch logic and the Cloudflare Edge Runtime.
+
+2. **Dependency Conflicts:** As a project leveraging **Next.js 15+**, I encountered significant peer dependency mismatches with the Cloudflare adapter. To maintain the project's integrity and use the latest React 19 features, a more native environment was required.
+
+3. **Optimizing for Streaming :** Vercel provides native, zero-config support for **React 18 Streaming**. To ensure the Suspense boundaries and movie-grid streaming worked flawlessly for this assessment, Vercel was the scientifically superior choice.

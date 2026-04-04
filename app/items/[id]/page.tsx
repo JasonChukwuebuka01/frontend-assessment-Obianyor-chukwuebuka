@@ -38,7 +38,7 @@ export default async function MovieDetailPage({ params }: Props) {
 
 
   const { id } = await params;
-  
+
   let movie;
 
   try {
@@ -58,15 +58,15 @@ export default async function MovieDetailPage({ params }: Props) {
           src={getMovieImageUrl(movie.backdrop_path, 'original')}
           alt=""
           fill
-          priority // F-2: Priority for above-the-fold image
+          priority
           className="object-cover opacity-40"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent" />
-        
+
         {/* F-2: Breadcrumb Navigation */}
         <nav className="absolute left-4 top-8 md:left-8" aria-label="Breadcrumb">
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition"
           >
             ← Back to Listing
@@ -99,7 +99,7 @@ export default async function MovieDetailPage({ params }: Props) {
               )}
             </header>
 
-            <div className="flex flex-wrap gap-4 text-sm font-medium">
+            <div className=" flex flex-wrap gap-4 text-sm font-medium justify-center items-center md:justify-start  ">
               <span className="rounded-full bg-indigo-500/20 px-3 py-1 text-indigo-400 border border-indigo-500/30">
                 {movie.status}
               </span>
@@ -121,11 +121,13 @@ export default async function MovieDetailPage({ params }: Props) {
             <section>
               <h2 className="mb-2 text-xl font-bold">Genres</h2>
               <div className="flex flex-wrap gap-2">
-                {movie.genres.map((genre) => (
-                  <span key={genre.id} className="rounded-lg bg-slate-900 px-3 py-1 text-sm">
-                    {genre.name}
-                  </span>
-                ))}
+                {
+                  movie.genres.map((genre) => (
+                    <span key={genre.id} className="rounded-lg bg-slate-900 px-3 py-1 text-sm">
+                      {genre.name}
+                    </span>
+                  ))
+                }
               </div>
             </section>
           </div>
