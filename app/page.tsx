@@ -10,8 +10,11 @@ interface HomePageProps {
   }>;
 }
 
+
+
+
 export default async function HomePage({ searchParams }: HomePageProps) {
- 
+
   const { query, page, minRating } = await searchParams;
   const currentPage = Number(page) || 1;
   const ratingThreshold = Number(minRating) || 0;
@@ -30,10 +33,8 @@ export default async function HomePage({ searchParams }: HomePageProps) {
           The ultimate database for cinema lovers. Search, filter, and discover.
         </p>
 
-        {/* SearchBar with its own small Suspense boundary */}
-        <Suspense fallback={<div className="h-12 w-full max-w-xl mx-auto bg-slate-900 animate-pulse rounded-xl" />}>
-          <SearchBar />
-        </Suspense>
+        <SearchBar />
+
       </header>
 
       {/* Results Section */}
